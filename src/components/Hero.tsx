@@ -27,7 +27,7 @@ const Hero = () => {
             {/* Name & Title */}
             <div className="space-y-4">
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-                Venkatesh Rapolu
+                Aaditya Surti
               </h1>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gradient">
                 Full Stack Developer
