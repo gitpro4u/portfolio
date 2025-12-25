@@ -20,7 +20,7 @@ const Navbar = () => {
             href="#home" 
             className="font-display text-xl font-bold text-primary hover:opacity-80 transition-opacity"
           >
-            Venkatesh Rapolu
+            Aaditya Surti
           </a>
 
           {/* Desktop Navigation */}
