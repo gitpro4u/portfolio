@@ -1,4 +1,5 @@
 import { Code, Database, Server, Cloud, Layers, Terminal } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const skillCategories = [
   {
@@ -39,10 +40,93 @@ const skillCategories = [
   },
 ];
 
+// Starfield component for animated background
+const Starfield = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const resizeCanvas = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    // Create stars
+    const stars: { x: number; y: number; size: number; speedX: number; speedY: number; opacity: number }[] = [];
+    const numStars = 100;
+
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 0.5,
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.3,
+        opacity: Math.random() * 0.5 + 0.3,
+      });
+    }
+
+    let animationId: number;
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      stars.forEach((star) => {
+        // Update position
+        star.x += star.speedX;
+        star.y += star.speedY;
+
+        // Wrap around edges
+        if (star.x < 0) star.x = canvas.width;
+        if (star.x > canvas.width) star.x = 0;
+        if (star.y < 0) star.y = canvas.height;
+        if (star.y > canvas.height) star.y = 0;
+
+        // Draw star
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 212, 255, ${star.opacity})`;
+        ctx.fill();
+
+        // Add glow effect
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size * 2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 212, 255, ${star.opacity * 0.2})`;
+        ctx.fill();
+      });
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      cancelAnimationFrame(animationId);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+    />
+  );
+};
+
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/10 to-transparent" />
+    <section id="skills" className="py-24 relative overflow-hidden">
+      {/* Starfield Background */}
+      <Starfield />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background/50" />
       
       <div className="container relative z-10 px-4">
         <div className="text-center mb-16">
