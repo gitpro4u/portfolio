@@ -35,15 +35,15 @@ const Contact = () => {
 
     try {
       await emailjs.send(
-        "service_1d2lqco",
-        "template_7o2t58v",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           name: form.name,
           email: form.email,
           subject: form.subject,
           message: form.message,
         },
-        "rRdsscP7DIggrXzJy"
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       setStatus("success");
