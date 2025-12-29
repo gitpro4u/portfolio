@@ -5,37 +5,31 @@ const skillCategories = [
   {
     title: "Frontend",
     icon: Code,
-    skills: ["React", "JavaScript", "TypeScript", "HTML/CSS", "Tailwind CSS"],
+    skills: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "TypeScript"],
     color: "primary",
   },
   {
-    title: "Backend",
+    title: "React Concepts",
     icon: Server,
-    skills: ["Java", "Spring Boot", "Node.js", "REST APIs", "Microservices"],
+    skills: ["Functional Components", "Hooks", "Props", "State Management", "Reusable Components"],
     color: "green",
   },
   {
-    title: "Database",
+    title: "UI / UX",
     icon: Database,
-    skills: ["MySQL", "MongoDB", "PostgreSQL", "Redis", "Firebase"],
+    skills: ["Wireframing", "Prototyping", "Typography", "Color Theory", "Responsive Design"],
     color: "purple",
-  },
-  {
-    title: "DevOps",
-    icon: Cloud,
-    skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Jenkins"],
-    color: "cyan",
   },
   {
     title: "Tools",
     icon: Terminal,
-    skills: ["Git", "VS Code", "IntelliJ", "Postman", "Jira"],
+    skills: ["Git", "GitHub", "Firebase", "Figma"],
     color: "accent",
   },
   {
-    title: "Architecture",
+    title: "Other",
     icon: Layers,
-    skills: ["System Design", "Design Patterns", "Clean Code", "Agile"],
+    skills: ["Python (Basics)", "Problem Solving", "Clean Code", "Collaboration"],
     color: "primary",
   },
 ];
@@ -121,13 +115,44 @@ const Starfield = () => {
   );
 };
 
+
+const Marquee = () => {
+  // Flatten all skills into a single array
+  const allSkills = skillCategories.flatMap((cat) => cat.skills);
+  // Duplicate for seamless loop
+  const skillsList = [...allSkills, ...allSkills];
+  return (
+    <div className="relative w-full overflow-x-hidden py-4 mb-10">
+      <div
+        className="flex gap-6 animate-marquee whitespace-nowrap"
+        style={{ animation: 'marquee 18s linear infinite' }}
+      >
+        {skillsList.map((skill, idx) => (
+          <span
+            key={idx}
+            className="px-5 py-2 rounded-lg bg-secondary/70 text-base text-muted-foreground border border-secondary/30 shadow-sm mx-1"
+          >
+            {skill}
+          </span>
+        ))}
+      </div>
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 const Skills = () => {
   return (
     <section id="skills" className="py-24 relative overflow-hidden">
       {/* Starfield Background */}
       <Starfield />
       <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background/50" />
-      
+
       <div className="container relative z-10 px-4">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
@@ -138,32 +163,43 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, index) => (
-            <div
-              key={category.title}
-              className="glass rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 group"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className={`p-3 rounded-xl bg-${category.color}/10`}>
-                  <category.icon className={`w-6 h-6 text-${category.color}`} />
+        {/* Marquee Skill Category Boxes */}
+        <div className="relative w-full overflow-x-hidden py-4 mb-10">
+          <div
+            className="flex gap-8 animate-marquee-boxes whitespace-nowrap"
+            style={{ animation: 'marquee-boxes 14s linear infinite' }}
+          >
+            {[...skillCategories, ...skillCategories].map((category, index) => (
+              <div
+                key={category.title + index}
+                className="glass rounded-2xl p-6 min-w-[320px] max-w-xs hover:border-primary/50 transition-all duration-300 group mx-2 shadow-lg"
+                style={{ animationDelay: `${(index % skillCategories.length) * 0.1}s` }}
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`p-3 rounded-xl bg-${category.color}/10`}>
+                    <category.icon className={`w-6 h-6 text-${category.color}`} />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold">{category.title}</h3>
                 </div>
-                <h3 className="font-display text-xl font-semibold">{category.title}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 rounded-lg bg-secondary/50 text-sm text-muted-foreground group-hover:text-foreground transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1.5 rounded-lg bg-secondary/50 text-sm text-muted-foreground group-hover:text-foreground transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <style>{`
+            @keyframes marquee-boxes {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+          `}</style>
         </div>
       </div>
     </section>

@@ -3,22 +3,28 @@ import { Button } from "@/components/ui/button";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with React frontend and Spring Boot microservices backend. Features include user authentication, product catalog, shopping cart, and payment integration.",
-    tech: ["React", "Spring Boot", "MySQL", "AWS"],
+    title: "AI Voice Intaker (Voice-Agent)",
+    description: "Developed a React-based frontend for a voice-enabled AI healthcare assistant. Built reusable functional components using React Hooks and TypeScript. Designed intuitive UI flows for patient data collection and appointment scheduling. Integrated Firebase for authentication and real-time data handling.",
+    tech: ["React", "TypeScript", "Firebase", "React Hooks"],
     image: "bg-gradient-to-br from-primary/20 to-purple/20",
+    github: "https://github.com/gitpro4u/Voice-Agent",
+    date: "Jun 2025",
   },
   {
-    title: "Task Management System",
-    description: "Collaborative project management tool with real-time updates, kanban boards, and team collaboration features built with modern technologies.",
-    tech: ["React", "Node.js", "MongoDB", "Socket.io"],
+    title: "Event Management System",
+    description: "Created a responsive frontend interface using HTML, CSS, and JavaScript. Implemented dynamic UI interactions, event listings, and form validation. Focused on clean layouts, accessibility, and user experience.",
+    tech: ["HTML5", "CSS3", "JavaScript"],
     image: "bg-gradient-to-br from-green/20 to-primary/20",
+    github: null,
+    date: null,
   },
   {
-    title: "Analytics Dashboard",
-    description: "Data visualization dashboard with interactive charts, real-time metrics, and customizable widgets for business intelligence.",
-    tech: ["React", "TypeScript", "D3.js", "PostgreSQL"],
+    title: "CarbonBuddy",
+    description: "Built a React.js dashboard to track daily CO₂ emissions and monthly goals. Implemented interactive UI components for data visualization and user engagement. Followed component-based architecture for maintainable and scalable code.",
+    tech: ["React.js", "JavaScript", "Component Architecture"],
     image: "bg-gradient-to-br from-purple/20 to-accent/20",
+    github: "https://github.com/gitpro4u/Carbon-Buddy",
+    date: null,
   },
 ];
 
@@ -52,9 +58,14 @@ const Projects = () => {
 
               {/* Project Content */}
               <div className="p-6 space-y-4">
-                <h3 className="font-display text-xl font-semibold group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="font-display text-xl font-semibold group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  {project.date && (
+                    <span className="text-xs text-muted-foreground whitespace-nowrap">{project.date}</span>
+                  )}
+                </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {project.description}
                 </p>
@@ -73,11 +84,21 @@ const Projects = () => {
 
                 {/* Actions */}
                 <div className="flex gap-3 pt-2">
-                  <Button variant="outline" size="sm" className="flex-1">
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
-                  </Button>
-                  <Button size="sm" className="flex-1 bg-gradient-primary text-primary-foreground">
+                  {project.github ? (
+                    <Button 
+                      className="flex-1 border border-input bg-background hover:bg-accent hover:text-accent-foreground"
+                      onClick={() => window.open(project.github, '_blank', 'noopener,noreferrer')}
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </Button>
+                  ) : (
+                    <Button className="flex-1 border border-input bg-background hover:bg-accent hover:text-accent-foreground" disabled>
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </Button>
+                  )}
+                  <Button className="flex-1 bg-gradient-primary text-primary-foreground" disabled>
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Demo
                   </Button>
