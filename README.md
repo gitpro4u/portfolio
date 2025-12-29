@@ -30,4 +30,69 @@ It includes a fully working **Contact Form** with email functionality and is dep
 ---
 
 ## 📂 Project Structure
+Portfolio/
+├── public/
+│ ├── aadi.jpeg
+│ └── favicon.ico
+├── src/
+│ ├── components/
+│ │ ├── Hero.tsx
+│ │ ├── Navbar.tsx
+│ │ ├── Skills.tsx
+│ │ ├── Projects.tsx
+│ │ └── Contact.tsx
+│ ├── App.tsx
+│ └── main.tsx
+├── package.json
+└── README.md
+
+
+
+---
+
+## 📩 Contact Form Functionality
+
+The contact form uses **EmailJS**, allowing users to send messages directly without a backend.
+
+**Form Fields:**
+- Name
+- Email
+- Subject
+- Message
+
+**Features:**
+- Loading state
+- Success & error messages
+- Direct reply support
+
+---
+
+## 🚀 Deployment
+
+The project is deployed using **Vercel** with automatic redeployment on every GitHub push.
+
+To deploy:
+1. Push code to GitHub
+2. Import repository into Vercel
+3. Deploy 🚀
+
+---
+
+## 🧑‍💻 About Me
+
+I’m a **Frontend Developer** focused on building clean, responsive, and user-friendly web applications using modern technologies.
+
+📍 Location: Vadodara, Gujarat, India  
+📧 Email: aadityasurati22@gmail.com  
+
+---
+
+## 📜 License
+
+This project is open-source and available for personal learning and inspiration.
+
+---
+
+⭐ If you like this project, consider giving it a star!
+
 
