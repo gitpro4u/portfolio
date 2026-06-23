@@ -226,6 +226,26 @@ const projects = [
     demo: "https://studcel.vercel.app/",
     date: null,
   },
+  {
+    title: "Avg-Run Club",
+    description: 
+      "A real Run Club website , where new members can register in the club and book their slot for the latest run event. ",
+    tech: ["React.js", "Tailwind CSS "," Node.js"],
+    image: "bg-gradient-to-br from-pink-500/40 via-violet-500/30 to-cyan-400/4",
+    github: "https://github.com/gitpro4u/avg-run-club",
+    demo: "https://avgclub.vercel.app/",
+    date: null,  
+  },
+  {
+    title: "Prescripto",
+    description: 
+      "A hospital management website, where users can browse doctors, view details, and book appointments for more information. ",
+    tech: ["React.js", "Tailwind CSS", "Node.js" , "Express.js", "MongoDB", ],
+    image: "bg-gradient-to-br from-blue-500/40 via-red-500/30 to-cyan-400/4",
+    github: "https://github.com/gitpro4u/prescripto",
+    demo: "https://prescripto-puce-psi.vercel.app/",
+    date: null,  
+  },
 ];
 
 const Projects = () => {

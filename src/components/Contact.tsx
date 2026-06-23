@@ -1,4 +1,4 @@
-import { Mail, MapPin, Send, Github, Linkedin, Twitter, Phone } from "lucide-react";
+import { Mail, MapPin, Send, Github, Linkedin, Twitter,Instagram, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,6 +9,7 @@ const socialLinks = [
   { icon: Github, href: "https://github.com/gitpro4u", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/aaditya-surti-51b780293", label: "LinkedIn" },
   { icon: Twitter, href: "#", label: "Twitter" },
+  {icon: Instagram, href: "https://www.instagram.com/aaditya_.surti/", label: "Instagram" }
 ];
 
 const Contact = () => {

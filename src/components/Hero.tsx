@@ -283,7 +283,7 @@ const Hero = () => {
 
             {/* Floating badges (unchanged, safe on mobile) */}
             <div className="absolute -top-4 -left-6 glass-strong rounded-2xl p-4 animate-float z-20 shadow-2xl border border-primary/20">
-              <p className="text-3xl font-bold text-primary">10+</p>
+              <p className="text-3xl font-bold text-primary">7+</p>
               <p className="text-sm text-muted-foreground font-medium">
                 Projects
               </p>
